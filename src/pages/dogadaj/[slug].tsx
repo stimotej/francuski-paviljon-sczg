@@ -9,26 +9,26 @@ import type { ParsedUrlQuery } from "querystring";
 import React from "react";
 import { QueryClient, dehydrate, useQuery } from "react-query";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: pages } = await axios.get<Collection<Event>>("/events", {
-    params: {
-      "pagination[pageSize]": "100",
-    },
-  });
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const { data: pages } = await axios.get<Collection<Event>>("/events", {
+//     params: {
+//       "pagination[pageSize]": "100",
+//     },
+//   });
 
-  const paths = pages.data.map((page) => ({
-    params: { slug: page.attributes.slug },
-  }));
+//   const paths = pages.data.map((page) => ({
+//     params: { slug: page.attributes.slug },
+//   }));
 
-  return {
-    paths,
-    fallback: true,
-  };
-};
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// };
 
-interface StaticPathParams extends ParsedUrlQuery {
-  slug: string;
-}
+// interface StaticPathParams extends ParsedUrlQuery {
+//   slug: string;
+// }
 
 const getEvent = async (slug: string) => {
   const response = await axios.get<Collection<Event>>("/events", {
@@ -39,20 +39,20 @@ const getEvent = async (slug: string) => {
   return response.data.data[0];
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as StaticPathParams;
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const { slug } = params as StaticPathParams;
 
-  const queryClient = new QueryClient();
+//   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["event", slug], () => getEvent(slug));
+//   await queryClient.prefetchQuery(["event", slug], () => getEvent(slug));
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//     revalidate: 60 * 60 * 24,
+//   };
+// };
 
 const EventDetail = () => {
   const router = useRouter();
