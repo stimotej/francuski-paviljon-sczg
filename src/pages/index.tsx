@@ -70,6 +70,7 @@ export default function Home() {
                 "Francuski paviljon"
               }
               className="w-60 h-60 object-cover"
+              priority
             />
             <div className="text-white text-base md:text-lg flex-1">
               <DisplayHTML html={data?.data.attributes.Informacije || ""} />
@@ -146,7 +147,7 @@ export default function Home() {
               target="_blank"
               aria-label="Otvori virtualnu šetnju"
             >
-              <img
+              <Image
                 src={
                   (process.env.NEXT_PUBLIC_BACKEND_URL || "") +
                   data?.data.attributes.Virtualna_setnja.data.attributes.url
@@ -163,6 +164,7 @@ export default function Home() {
                   "Francuski paviljon virtualna šetnja"
                 }
                 className="w-full h-auto object-cover"
+                priority
               />
             </a>
             <div className="bg-black/60 text-white text-lg p-4 absolute left-0 bottom-24">
