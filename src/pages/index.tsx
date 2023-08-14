@@ -24,19 +24,19 @@ const getPages = async () => {
   return response.data;
 };
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const queryClient = new QueryClient();
+export const getStaticProps: GetStaticProps = async () => {
+  const queryClient = new QueryClient();
 
-//   await queryClient.prefetchQuery("pocetna-stranica", getPocetnaStranica);
-//   await queryClient.prefetchQuery("stranicas", getPages);
+  await queryClient.prefetchQuery("pocetna-stranica", getPocetnaStranica);
+  await queryClient.prefetchQuery("stranicas", getPages);
 
-//   return {
-//     props: {
-//       dehydratedState: dehydrate(queryClient),
-//     },
-//     revalidate: 60 * 60 * 24,
-//   };
-// };
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+    revalidate: 60 * 60 * 24,
+  };
+};
 
 export default function Home() {
   const { data } = useQuery("pocetna-stranica", getPocetnaStranica);
@@ -56,9 +56,19 @@ export default function Home() {
             <Image
               width={240}
               height={240}
-              src="/francuski-paviljon-sczg-logo.png"
-              alt="Francuski paviljon logo"
-              title="Francuski paviljon"
+              src={
+                (process.env.NEXT_PUBLIC_BACKEND_URL || "") +
+                data?.data.attributes.Slika.data.attributes.url
+              }
+              alt={
+                data?.data.attributes.Slika.data.attributes.alternativeText ||
+                "Francuski paviljon logo"
+              }
+              title={
+                data?.data.attributes.Slika.data.attributes.caption ||
+                data?.data.attributes.Slika.data.attributes.alternativeText ||
+                "Francuski paviljon"
+              }
               className="w-60 h-60 object-cover"
             />
             <div className="text-white text-base md:text-lg flex-1">

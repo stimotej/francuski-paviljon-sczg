@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import axios from "axios";
 import dayjs from "dayjs";
 import type { AppProps } from "next/app";
-import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import hrLocale from "dayjs/locale/hr";
 
 const queryClient = new QueryClient();
