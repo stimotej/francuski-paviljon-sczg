@@ -23,19 +23,19 @@ const getPages = async () => {
   return response.data;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
+// export const getStaticProps: GetStaticProps = async () => {
+//   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("pocetna-stranica", getPocetnaStranica);
-  await queryClient.prefetchQuery("stranicas", getPages);
+//   await queryClient.prefetchQuery("pocetna-stranica", getPocetnaStranica);
+//   await queryClient.prefetchQuery("stranicas", getPages);
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//     revalidate: 60 * 60 * 24,
+//   };
+// };
 
 export default function Home() {
   const { data } = useQuery("pocetna-stranica", getPocetnaStranica);
