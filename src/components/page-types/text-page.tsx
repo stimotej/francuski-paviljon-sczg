@@ -4,7 +4,6 @@ import React from "react";
 import Container from "../container";
 import DisplayHTML from "../display_html";
 import dayjs from "dayjs";
-import Image from "next/image";
 
 type TextPageProps =
   | {
@@ -19,7 +18,7 @@ type TextPageProps =
 const TextPage: React.FC<TextPageProps> = (props) => {
   return (
     <>
-      <Image
+      <img
         src={
           process.env.NEXT_PUBLIC_BACKEND_URL +
           props.page.attributes.Slika.data.attributes.url
@@ -29,7 +28,6 @@ const TextPage: React.FC<TextPageProps> = (props) => {
           "Francuski paviljon povijest"
         }
         className="absolute -z-10 w-full h-auto object-cover top-32"
-        priority
       />
       <Container>
         <div className="w-full sm:w-3/4 lg:w-2/3 bg-black/60 my-12 p-6 text-white">
