@@ -5,6 +5,7 @@ import { Collection } from "@/types/collection";
 import { Stranica } from "@/types/stranica";
 import axios from "axios";
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import type { ParsedUrlQuery } from "querystring";
 import React from "react";
@@ -68,7 +69,19 @@ const PageDetail = () => {
   );
 
   if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>Greška...</div>;
+  if (!data)
+    return (
+      <main className="flex flex-col items-center justify-center gap-2 p-12 text-center">
+        <h1 className="text-2xl font-bold">Stranica nije pronađena</h1>
+        <p>
+          Stranica koju tražite nije pronađena. Možda je uklonjena ili je
+          poveznica koju ste pratili pogrešna.
+        </p>
+        <Link href="/" className="text-blue-500 underline">
+          Povratak
+        </Link>
+      </main>
+    );
   return (
     <RootLayout
       title={data.attributes.Naslov}

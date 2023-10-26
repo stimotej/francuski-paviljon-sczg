@@ -16,11 +16,14 @@ const SliderPage: React.FC<SliderPageProps> = (props) => {
         </h1>
       </Container>
       {props.page.attributes.Slideri.map((slider) => (
-        <div key={slider.id} className={slider.Istaknuti_naslov ? "" : "my-24"}>
+        <div
+          key={slider.id}
+          className={slider.Istaknuti_naslov ? "mb-8" : "my-24"}
+        >
           {!!slider.Naslov ? (
             slider.Istaknuti_naslov ? (
               <div className="bg-siva-600 pt-12 pb-[184px]">
-                <Container className="border-y border-white py-8">
+                <Container className="border-y-[0.25px] border-white py-8">
                   <h3 className="text-white text-xl sm:text-2xl lg:text-3xl">
                     {slider.Naslov}
                   </h3>

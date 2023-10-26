@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <RootLayout>
       <section className="bg-siva-600 pt-12 pb-24">
-        <Container className="border-y border-white py-5">
+        <Container className="border-y-[0.25px] border-white py-5">
           <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl">
             {data?.data.attributes.Naslov}
           </h1>
@@ -110,7 +110,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-siva-600 py-24 border-y border-white">
+      <section className="bg-siva-600 py-24 border-y-[0.25px] border-white">
         <Slider
           slides={
             pages?.data.map((page) => ({

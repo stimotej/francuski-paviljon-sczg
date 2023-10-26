@@ -30,8 +30,8 @@ const TextPage: React.FC<TextPageProps> = (props) => {
         className="absolute -z-10 w-full h-auto object-cover top-32"
       />
       <Container>
-        <div className="w-full sm:w-3/4 lg:w-2/3 bg-black/60 my-12 p-6 text-white">
-          <div className="p-6 border border-white">
+        <div className="w-full sm:w-3/4 lg:w-2/3 bg-black/60 my-12 p-4 sm:p-6 md:p-10 lg:py-12 lg:px-24 text-white">
+          <div className="p-6 border-[0.25px] border-white">
             <h1 className="text-2xl md:text-3xl lg:text-4xl">
               {props.type === "event"
                 ? props.page.attributes.Autor
@@ -70,7 +70,7 @@ const TextPage: React.FC<TextPageProps> = (props) => {
               ))}
             </div>
           </div>
-          <div className="p-6 border border-white mt-6">
+          <div className="p-6 border-[0.25px] border-white mt-6">
             <DisplayHTML
               html={props.page.attributes.Sadrzaj || ""}
               className="prose max-w-none prose-blockquote:text-gray-300 prose-a:text-white text-white"
